@@ -8,16 +8,20 @@ export async function GET() {
   if (session) {
 
     const idToken = await getIdToken();
+    console.log("correcttttt");
 
     // this will log out the user on Keycloak side
     var url = `${process.env.END_SESSION_URL}?id_token_hint=${idToken}&post_logout_redirect_uri=${encodeURIComponent(process.env.NEXTAUTH_URL)}`;
 
-    try {
-      const resp = await fetch(url, { method: "GET" });
-    } catch (err) {
-      console.error(err);
-      return new Response({ status: 500 });
-    }
+    // try {
+    //   const resp = await fetch(url, { method: "GET" });
+    // } catch (err) {
+    //   console.error(err);
+    //   return new Response({ status: 500 });
+    // }
+    return Response.redirect(url, 302);
+
   }
-  return new Response({ status: 200 });
+  // return new Response({ status: 200 });
+  return Response.redirect(process.env.NEXTAUTH_URL + "/login", 302);
 }

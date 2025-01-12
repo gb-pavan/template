@@ -73,7 +73,6 @@ async function keycloakSessionLogOut(): Promise<void> {
 function AuthStatus() {
   // Typed session and status from useSession
   const { data: session, status } = useSession();
-  console.log("heheheh");
 
   useEffect(() => {
     if (
@@ -97,7 +96,7 @@ function AuthStatus() {
         <button
           className="bg-blue-900 font-bold text-white py-1 px-2 rounded border border-gray-50"
           onClick={() => {
-            keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/" }));
+            keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/login" }));
           }}
         >
           Log out

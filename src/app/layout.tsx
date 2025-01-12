@@ -38,18 +38,18 @@ export default function RootLayout({
         <SessionProviderWrapper>
           <ThemeProvider >
             <StoreProvider >
-              <div className="w-full h-screen flex bg-red-500">
+              {/* <div className="w-full h-screen flex bg-red-500">
                 <div className="w-1/5 bg-blue-500 p-4">
                   <p className="text-white">1/5th width</p>
                 </div>
 
-                {/* 4/5th width container */}
                 <div className="w-4/5 bg-green-500 p-4">
                   <p className="text-white">4/5th width</p>
                 </div>
                 {children}
               </div>
-            {/* <LayoutWithErrorBoundary>{children}</LayoutWithErrorBoundary> */}
+            <LayoutWithErrorBoundary>{children}</LayoutWithErrorBoundary> */}
+            {children}
             </StoreProvider>
           </ThemeProvider>
         </SessionProviderWrapper>
