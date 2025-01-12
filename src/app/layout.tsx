@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import LayoutWithErrorBoundary from './error-boundary/withErrorBoundaryWrapper';
-import { MantineProviderWrapper } from './MantineProviderWrapper';
+import LayoutWithErrorBoundary from '../components/error-boundary/withErrorBoundaryWrapper';
+import { MantineProviderWrapper } from '@/context/MantineProviderWrapper';
+import Sidebar from "@/components/Sidebar/Sidebar";
+import { StoreProvider } from "../context/StoreProvider";
+import { ThemeProvider } from "@/context/ThemeContext";
+import  SessionProviderWrapper  from "@/context/SessionProviderWrapper";
 
 
 const geistSans = Geist({
@@ -31,9 +35,24 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MantineProviderWrapper >
-          <LayoutWithErrorBoundary>{children}</LayoutWithErrorBoundary>
-        </MantineProviderWrapper>
+        <SessionProviderWrapper>
+          <ThemeProvider >
+            <StoreProvider >
+              <div className="w-full h-screen flex bg-red-500">
+                <div className="w-1/5 bg-blue-500 p-4">
+                  <p className="text-white">1/5th width</p>
+                </div>
+
+                {/* 4/5th width container */}
+                <div className="w-4/5 bg-green-500 p-4">
+                  <p className="text-white">4/5th width</p>
+                </div>
+                {children}
+              </div>
+            {/* <LayoutWithErrorBoundary>{children}</LayoutWithErrorBoundary> */}
+            </StoreProvider>
+          </ThemeProvider>
+        </SessionProviderWrapper>
       </body>
     </html>
   );
