@@ -24,6 +24,17 @@ export const authOptions: AuthOptions = {
   ],
 
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      return url.startsWith(baseUrl)
+        ? url
+        : baseUrl + "/profile"; // Change this to your desired page
+    },
+
+    // async redirect({ url }) {
+    //   return url;
+    // },
+
+
     async jwt({
       token,
       user,
