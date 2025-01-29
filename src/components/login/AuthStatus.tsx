@@ -36,14 +36,14 @@ function AuthStatus() {
         <span className="text-yellow-100">
           {(session.user?.email as string) ?? "No Email"}
         </span>{" "}
-        <button
+        {/* <button
           className="bg-blue-900 font-bold text-white py-1 px-2 rounded border border-gray-50"
           onClick={() => {
             keycloakSessionLogOut().then(() => signOut({ callbackUrl: "/login" }));
           }}
         >
           Log out
-        </button>
+        </button> */}
       </div>
     );
   }

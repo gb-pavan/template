@@ -25,10 +25,49 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async redirect({ url, baseUrl }) {
-      return url.startsWith(baseUrl)
-        ? url
-        : baseUrl + "/profile"; // Change this to your desired page
-    },
+  console.log("Redirect URL:", url);
+  
+  // Check if the URL contains 'localhost:3000'
+  // if (/^localhost:3000\/?$/.test(url)) {
+  //   return `${url}/check`; // Use template literal for concatenation
+  // }
+  
+  // Check if the URL contains 'check'
+  if (url.includes('test')) {
+    return url.replace('test','check');
+  }
+  if (url.includes('check')) {
+    // return `${url}/profile`; // Use template literal for concatenation
+    return url.replace('check', 'profile');
+  }
+
+  // Default behavior
+  return `${baseUrl}/test`; // Fallback to a default page using template literal
+},
+
+//     async redirect({ url, baseUrl }) {
+//   console.log("Redirect URL:", url);
+  
+//   // Check if the URL contains 'localhost:3000'
+//   if (url.includes('localhost:3000')) {
+//     return url + "/check";
+//   }
+  
+//   // Check if the URL contains 'check'
+//   if (url.includes('check')) {
+//     return url + "/profile";
+//   }
+
+//   // Default behavior
+//   return baseUrl + "/profile"; // Fallback to a default page
+// },
+    // async redirect({ url, baseUrl }) {
+    //   console.log("Redirect URL:", url);
+    //   return url.startsWith(baseUrl)
+    //     ? url + "/check"
+
+    //     : baseUrl + "/profile"; // Change this to your desired page
+    // },
 
     // async redirect({ url }) {
     //   return url;
