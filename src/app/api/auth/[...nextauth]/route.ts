@@ -38,7 +38,7 @@ export const authOptions: AuthOptions = {
   }
   if (url.includes('check')) {
     // return `${url}/profile`; // Use template literal for concatenation
-    return url.replace('check', 'profile');
+    return url.replace('check', '/');
   }
 
   // Default behavior
